@@ -21,12 +21,17 @@ def slice_to_half(char_num_list):
     return front, back
 
 
-def is_palindrome(*lists):
-    front = lists[0]
-    back = reversed(lists[1])
+def is_palindrome(list):
+    # 내 풀이
+    # front = lists[0]
+    # back = reversed(lists[1])
+    #
+    # for idx, item in enumerate(back):
+    #     if front[idx] != item:
+    #         return False
 
-    for idx, item in enumerate(back):
-        if front[idx] != item:
+    while len(list) > 1:
+        if list.pop(0) != list.pop():
             return False
 
     return True
@@ -34,8 +39,10 @@ def is_palindrome(*lists):
 
 def main(test_case):
     char_num_list = extract_num_char(test_case.lower())
-    front, back = slice_to_half(char_num_list)
-    return is_palindrome(front, back)
+    # while True:
+    #     return char_num_list.pop(0) != char_num_list.pop()
+    # front, back = slice_to_half(char_num_list)
+    return is_palindrome(char_num_list)
 
 
 def start(test_cases):
