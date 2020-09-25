@@ -37,5 +37,4 @@ def start(test_cases):
     for idx, case in enumerate(test_cases):
         print(f"case {idx}: {main(case)}")
 
-
 start(test_cases)
