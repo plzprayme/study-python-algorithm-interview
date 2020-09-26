@@ -10,18 +10,14 @@ test_cases = [
 banned = ["hit"]
 
 
-def main(words, banned):
-    words = words.lower()
-    words = re.sub(pattern='[^\w\s]', repl='', string=words)
+def main(paragraph, banned):
+    words = [word for word in re.sub(r'[^\w]', ' ', paragraph)
+             .lower().split()
+                if word not in banned]
 
-    result = []
-    for banned_word in banned:
-        result = words.replace(banned_word, "")
+    counts = collections.Counter(words)
+    return counts.most_common(1)[0][0]
 
-    count = collections.Counter(result.split(" "))
-    for item, common in count.most_common(2):
-        if item != "":
-            return item
 
 
 def start(test_cases, banned):
