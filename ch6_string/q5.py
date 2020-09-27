@@ -1,5 +1,6 @@
 # 문자열 배열을 받아 애너그램 단위로 그룹핑하라.
 
+import collections
 
 test_cases = [
     ["eat", "tea", "tan", "ate", "nat", "bat"]
@@ -7,17 +8,11 @@ test_cases = [
 
 
 def main(strs):
-    dict = {}
-    for str in strs:
-        sorted_str = "".join(sorted(str))
+    anagrams = collections.defaultdict(list)
 
-        try:
-            if dict[sorted_str]:
-                dict[sorted_str] = dict[sorted_str] + [str]
-        except:
-            dict[sorted_str] = [str]
-
-    return [x for x in dict.values()]
+    for word in strs:
+        anagrams[''.join(sorted(word))].append(word)
+    return anagrams.values()
 
 
 def start(test_cases):
